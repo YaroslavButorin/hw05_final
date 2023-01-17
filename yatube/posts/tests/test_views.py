@@ -13,14 +13,10 @@ User = get_user_model()
 POST_PER_PAGE = settings.POST_LIMIT_PER_PAGE
 
 TEMP_MEDIA_FOLDER = tempfile.mkdtemp(dir=settings.BASE_DIR)
-print(TEMP_MEDIA_FOLDER)
 
 
 @override_settings(MEDIA_ROOT=TEMP_MEDIA_FOLDER)
 class PostPagesTests(TestCase):
-    def __init__(self):
-        self.authorized_client = None
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
