@@ -65,43 +65,29 @@ class PostPagesTests(TestCase):
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
 
-    # def test_pages_uses_correct_template(self):
-    #     """-"""
-    #     templates_pages_names = {
-    #         'posts/index.html':
-    #             reverse('posts:index'),
-    #         'posts/group_list.html':
-    #             reverse('posts:group_list', kwargs={'slug': self.group.slug}),
-    #         'posts/profile.html':
-    #             reverse('posts:profile', kwargs={'username': self.user}),
-    #         'posts/post_detail.html':
-    #             reverse('posts:post_detail', kwargs={'post_id': self.post.pk}),
-    #         'posts/create_post.html': [
-    #             reverse('posts:post_edit', kwargs={'post_id': self.post.pk}),
-    #             reverse('posts:post_create'), ]
-    #     }
-    #     for template, reverse_name in templates_pages_names.items():
-    #         print(template,reverse_name)
-    #         with self.subTest(reverse_name=reverse_name):
-    #             if type(reverse_name) == list:
-    #                 for x in reverse_name:
-    #                     response = self.authorized_client.get(x)
-    #                     self.assertTemplateUsed(response, template)
-    #             else:
-    #                 response = self.authorized_client.get(reverse_name)
-    #                 self.assertTemplateUsed(response, template)
+    # def test_pages_uses_correct_template(self): """-"""
+    # templates_pages_names = { 'posts/index.html': reverse('posts:index'),
+    # 'posts/group_list.html': reverse('posts:group_list', kwargs={'slug':
+    # self.group.slug}), 'posts/profile.html': reverse('posts:profile',
+    # kwargs={'username': self.user}), 'posts/post_detail.html': reverse(
+    # 'posts:post_detail', kwargs={'post_id': self.post.pk}),
+    # 'posts/create_post.html': [ reverse('posts:post_edit', kwargs={
+    # 'post_id': self.post.pk}), reverse('posts:post_create'), ] } for
+    # template, reverse_name in templates_pages_names.items(): print(
+    # template,reverse_name) with self.subTest(reverse_name=reverse_name):
+    # if type(reverse_name) == list: for x in reverse_name: response =
+    # self.authorized_client.get(x) self.assertTemplateUsed(response,
+    # template) else: response = self.authorized_client.get(reverse_name)
+    # self.assertTemplateUsed(response, template)
     #
 
-    # def test_post_index_page_show_correct_context(self):
-    #     """-"""
-    #     response = self.authorized_client.get(reverse('posts:index'))
-    #     print(response.content)
-    #     self.assertEqual(len(response.context['page_obj'].object_list),
-    #                      POST_PER_PAGE)
-    #     self.assertEqual(response.context['page_obj'].object_list[0].image,
-    #                      self.post.image)
-    #     response = self.client.get(reverse('posts:index') + '?page=2')
-    #     self.assertEqual(len(response.context['page_obj']), POST_PER_PAGE - 5)
+    # def test_post_index_page_show_correct_context(self): """-""" response
+    # = self.authorized_client.get(reverse('posts:index')) print(
+    # response.content) self.assertEqual(len(response.context[
+    # 'page_obj'].object_list), POST_PER_PAGE) self.assertEqual(
+    # response.context['page_obj'].object_list[0].image, self.post.image)
+    # response = self.client.get(reverse('posts:index') + '?page=2')
+    # self.assertEqual(len(response.context['page_obj']), POST_PER_PAGE - 5)
 
     def test_posts_group_list_pages_show_correct_context(self):
         """-"""
@@ -115,7 +101,8 @@ class PostPagesTests(TestCase):
         self.assertEqual(len(response.context['page_obj']), POST_PER_PAGE)
         response = self.client.get(reverse('posts:group_list', kwargs={
             'slug': self.group.slug}) + '?page=2')
-        self.assertEqual(len(response.context['page_obj']), POST_PER_PAGE - 5)
+        self.assertEqual(len(response.context['page_obj']),
+                         POST_PER_PAGE - 5)
 
     def test_posts_profile_pages_show_correct_context(self):
         """-"""
