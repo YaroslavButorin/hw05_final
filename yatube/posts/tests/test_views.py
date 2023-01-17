@@ -46,7 +46,7 @@ class PostPagesTests(TestCase):
             cls.post = Post.objects.create(
                 author=cls.user,
                 group=cls.group,
-                text=f'Тестовый пост',
+                text='Тестовый пост',
                 image=cls.uploaded
             )
 
