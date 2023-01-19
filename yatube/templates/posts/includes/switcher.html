@@ -1,3 +1,4 @@
+{% with request.resolver_match.view_name as view_name %}
 {% if user.is_authenticated %}
   <div class="container col-lg-9 col-sm-12">
     <ul class="nav nav-tabs">
@@ -21,3 +22,4 @@
   </div>
   <br>
 {% endif %}
+{% endwith %}
