@@ -70,7 +70,9 @@ class PostPagesTests(TestCase):
                                      'posts:group_list',
                                      kwargs={'slug': self.group.slug}),
                                  'posts/profile.html': reverse('posts:profile',
-                                     kwargs={'username': self.user}),
+                                                               kwargs={
+                                                                'username':
+                                                                self.user}),
                                  'posts/post_detail.html': reverse(
                                      'posts:post_detail',
                                      kwargs={'post_id': self.post.pk}),
