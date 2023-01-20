@@ -10,9 +10,8 @@ from .utils import paginator
 
 @cache_page(20, key_prefix='index_page')
 def index(request):
-    posts = Post.objects.select_related('group')
+    posts = Post.objects.select_related('group').all().order_by('-pub_date')
     page_obj = paginator(request, posts)
-
     context = {
         'page_obj': page_obj,
     }
