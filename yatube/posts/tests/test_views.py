@@ -95,7 +95,6 @@ class PostPagesTests(TestCase):
     def test_post_index_page_show_correct_context(self):
         """-"""
         response = self.authorized_client.get(reverse('posts:index'))
-        print(response.content)
         self.assertEqual(len(response.context['page_obj'].object_list),
                          POST_PER_PAGE)
         self.assertIn(
@@ -237,9 +236,10 @@ class PostPagesTests(TestCase):
             )
         )
         follow = Follow.objects.last()
+
         self.assertEqual(Follow.objects.count(), count_follow + 1)
         self.assertEqual(follow.author, new_author)
-        self.assertEqual(follow.user, PostPagesTests.user)
+        self.assertEqual(follow.user, self.user)
 
     def test_unfollow(self):
         count_follow = Follow.objects.count()
