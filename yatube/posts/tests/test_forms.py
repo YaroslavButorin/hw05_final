@@ -1,12 +1,14 @@
+import shutil
+import tempfile
+
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
-import shutil
-import tempfile
 from django.conf import settings
 
 from ..models import Group, Post, Comment
+
 
 User = get_user_model()
 
@@ -132,7 +134,7 @@ class PostFormTests(TestCase):
             data=form_data,
             follow=True
         )
-        comment = Comment.objects.first()
+        comment = Comment.objects.last()
         self.assertRedirects(response, reverse(
             'posts:post_detail',
             kwargs={'post_id': PostFormTests.post.pk}

@@ -74,6 +74,7 @@ class Comment(CreatedModel):
 
 
 class Follow(CreatedModel):
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
