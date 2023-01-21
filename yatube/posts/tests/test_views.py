@@ -163,9 +163,6 @@ class PostPagesTests(TestCase):
         is_edit = response.context['form']
         self.assertTrue(is_edit)
 
-    # Михаил, помоги пожалуйста,
-    # ни в какую не могу пройти тест кэша не понимаю что не так
-
     def test_index_caches(self):
         new_post = Post.objects.create(
             author=PostPagesTests.user,
